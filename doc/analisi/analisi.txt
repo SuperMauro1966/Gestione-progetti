@@ -1,0 +1,71 @@
+﻿Analisi gestione progetti
+
+
+obiettivo: gestire grandi progetti sia in riguardo al personale sia per la gestione dei tempi 
+il progetto è gestito dall'utente seguendo la gerarchia delle wbs che può essere su più livelli
+
+
+creazione del progetto, suddivisione del progetto in componenti più piccole che a loro volta possono avere componenti ancora più piccole 
+ogni work package può avere una o più task. 
+un task avrà i seguenti attributi: 
+
+
+una descrizione che indica cosa bisogna fare;
+
+
+una ES (Early Start Date), ossia la prima data possibile in cui il task può iniziare; 
+
+
+una  EF (Early Finish Date), ossia la prima data possibile in cui il task può finire;
+
+
+la EF può essere decisa assegnando la durata del task o assegnando la data effettiva della fine del task;
+
+
+una LS (Late Start Date), data più recente in cui il task può iniziare;
+
+
+una LF (Late Finish Date), data più recente in cui il task può finire;
+
+
+un task avrà le risorse associate ad esso;
+
+
+per risorse si intendono persone o cose per completare un singolo task;
+
+
+ogni risorsa associato al task avrà la quantità di risorse e quindi avrà la sua unità di misura, come per esempio le persone in ore, un generatore in watt ecc;
+
+
+ogni progetto avrà dei milestone, dei momenti nel tempo in cui devono essere raggiunti certi obiettivi;
+
+
+una milestone ha associato una data o una durata temporale dall’inizio del progetto;
+
+
+una milestone ha associato anche dei deliverables che dovranno essere pronti entro la data associata al milestone;
+
+dovrà essere possibile interrogare il milestone per sapere:
+
+
+1. lo stato dei deliverables
+2. lo stato dei task con data di termine precedente al milestone
+3. la percentuale del completamento dei task che hanno data oltre la data del milestone
+
+
+
+
+
+
+
+
+glossario:
+
+
+definizione di progetto: Un progetto è un'iniziativa temporanea e unica, ideata per produrre un prodotto, un servizio o un risultato con un inizio e una fine definiti (solitamente con limiti di tempo, spesso limitati da finanziamenti o personale), intrapresa per soddisfare obiettivi e scopi unici, tipicamente per apportare un cambiamento positivo o un valore aggiunto.
+
+
+WBS: Una Work Breakdown Structure (WBS) è uno strumento di gestione dei progetti che suddivide un progetto in componenti o attività più piccole e gestibili. Si tratta di una gerarchia visiva che aiuta i team di progetto a pianificare, organizzare e monitorare i progressi. La WBS parte dall'obiettivo generale del progetto e lo scompone in deliverable, attività e sottoattività più piccole. Questa struttura gerarchica consente una comprensione dettagliata dell'ambito, dei costi e della durata del progetto.
+
+
+Work package: Nella gestione dei progetti, un pacchetto di lavoro è un raggruppamento di attività o compiti correlati che contribuiscono a uno specifico risultato o fase del progetto. È un elemento chiave all'interno di una Work Breakdown Structure (WBS) e rappresenta la più piccola unità di lavoro identificabile all'interno di un progetto. I pacchetti di lavoro aiutano a suddividere progetti di grandi dimensioni in parti più piccole e gestibili per la pianificazione, l'esecuzione e il controllo. Il work package è la unità minima nella wbs, cioè il livello più basso della scomposizione del progetto
