@@ -172,6 +172,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-
-# drawio backup file
-*.drawio.bkp
+.drawio.bkp
