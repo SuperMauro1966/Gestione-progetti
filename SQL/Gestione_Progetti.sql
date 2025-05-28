@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS `deliverables`;
 CREATE TABLE IF NOT EXISTS `deliverables` (
   `ID_Milestone` int(11) NOT NULL,
   `ID_Risorse` int(11) NOT NULL,
-  `quantita` int(4) DEFAULT NULL,
+  `Quantita` int(10) NOT NULL,
   KEY `ID_Milestone` (`ID_Milestone`),
   KEY `ID_Risorse` (`ID_Risorse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `progetto` (
   PRIMARY KEY (`ID_Progetto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dump dei dati della tabella gestione_progetti.progetto: ~2 rows (circa)
+-- Dump dei dati della tabella gestione_progetti.progetto: ~1 rows (circa)
 INSERT INTO `progetto` (`ID_Progetto`, `Nome`, `Descrizione`, `Data_Inizio`, `Data_Fine`) VALUES
 	(1, 'festa', 'piccola festa a casa', '2005-02-10', '2005-02-11'),
 	(3, 'Festona', 'grande festa in ristorante', '2010-07-19', '2010-07-20');
@@ -111,6 +111,17 @@ CREATE TABLE IF NOT EXISTS `risorsa` (
 
 -- Dump dei dati della tabella gestione_progetti.risorsa: ~0 rows (circa)
 
+-- Dump della struttura di tabella gestione_progetti.scompone
+DROP TABLE IF EXISTS `scompone`;
+CREATE TABLE IF NOT EXISTS `scompone` (
+  `ID_WBS` int(11) NOT NULL,
+  `ID_WBS(padre)` int(11) NOT NULL,
+  KEY `ID_WBS` (`ID_WBS`),
+  KEY `ID_WBS(padre)` (`ID_WBS(padre)`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dump dei dati della tabella gestione_progetti.scompone: ~0 rows (circa)
+
 -- Dump della struttura di tabella gestione_progetti.task
 DROP TABLE IF EXISTS `task`;
 CREATE TABLE IF NOT EXISTS `task` (
@@ -121,6 +132,33 @@ CREATE TABLE IF NOT EXISTS `task` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.task: ~0 rows (circa)
+
+-- Dump della struttura di tabella gestione_progetti.wbs
+DROP TABLE IF EXISTS `wbs`;
+CREATE TABLE IF NOT EXISTS `wbs` (
+  `ID_WBS` int(11) NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(50) NOT NULL DEFAULT '0',
+  `Descrizione` text NOT NULL,
+  `ID_Progetto` int(11) NOT NULL,
+  PRIMARY KEY (`ID_WBS`),
+  KEY `ID_Progetto` (`ID_Progetto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dump dei dati della tabella gestione_progetti.wbs: ~0 rows (circa)
+
+-- Dump della struttura di tabella gestione_progetti.work package
+DROP TABLE IF EXISTS `work package`;
+CREATE TABLE IF NOT EXISTS `work package` (
+  `ID_WP` int(11) NOT NULL AUTO_INCREMENT,
+  `Nome_WP` varchar(50) NOT NULL DEFAULT '0',
+  `Descrizione_WP` varchar(50) NOT NULL DEFAULT '0',
+  `Note` text NOT NULL,
+  `ID_WBS` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`ID_WP`),
+  KEY `ID_WBS` (`ID_WBS`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dump dei dati della tabella gestione_progetti.work package: ~0 rows (circa)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
