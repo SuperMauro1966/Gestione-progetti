@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `progetto` (
   PRIMARY KEY (`ID_Progetto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dump dei dati della tabella gestione_progetti.progetto: ~1 rows (circa)
+-- Dump dei dati della tabella gestione_progetti.progetto: ~2 rows (circa)
 INSERT INTO `progetto` (`ID_Progetto`, `Nome`, `Descrizione`, `Data_Inizio`, `Data_Fine`) VALUES
 	(1, 'festa', 'piccola festa a casa', '2005-02-10', '2005-02-11'),
 	(3, 'Festona', 'grande festa in ristorante', '2010-07-19', '2010-07-20');
