@@ -32,7 +32,9 @@ CREATE TABLE IF NOT EXISTS `appartiene` (
   `Stato` varchar(50) NOT NULL DEFAULT '',
   `Note` tinytext NOT NULL,
   KEY `ID_Task` (`ID_Task`),
-  KEY `ID_WP` (`ID_WP`)
+  KEY `ID_WP` (`ID_WP`),
+  CONSTRAINT `FK_appartiene_task` FOREIGN KEY (`ID_Task`) REFERENCES `task` (`ID_Task`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_appartiene_work package` FOREIGN KEY (`ID_WP`) REFERENCES `work package` (`ID_WP`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.appartiene: ~0 rows (circa)
@@ -44,7 +46,9 @@ CREATE TABLE IF NOT EXISTS `deliverables` (
   `ID_Risorse` int(11) NOT NULL,
   `Quantita` int(10) NOT NULL,
   KEY `ID_Milestone` (`ID_Milestone`),
-  KEY `ID_Risorse` (`ID_Risorse`)
+  KEY `FK_deliverables_risorsa` (`ID_Risorse`),
+  CONSTRAINT `FK_deliverables_milestone` FOREIGN KEY (`ID_Milestone`) REFERENCES `milestone` (`ID_Milestone`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_deliverables_risorsa` FOREIGN KEY (`ID_Risorse`) REFERENCES `risorsa` (`ID_Risorsa`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.deliverables: ~0 rows (circa)
@@ -66,7 +70,9 @@ CREATE TABLE IF NOT EXISTS `necessita` (
   `ID_Task` int(11) NOT NULL,
   `ID_Risorse` int(11) NOT NULL,
   KEY `ID_Task` (`ID_Task`),
-  KEY `ID_Risorse` (`ID_Risorse`)
+  KEY `ID_Risorse` (`ID_Risorse`),
+  CONSTRAINT `FK_necessita_risorsa` FOREIGN KEY (`ID_Risorse`) REFERENCES `risorsa` (`ID_Risorsa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_necessita_task` FOREIGN KEY (`ID_Task`) REFERENCES `task` (`ID_Task`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.necessita: ~0 rows (circa)
@@ -78,7 +84,9 @@ CREATE TABLE IF NOT EXISTS `produce` (
   `ID_WP` int(11) NOT NULL,
   `Quantita` int(10) NOT NULL,
   KEY `ID_Risorse` (`ID_Risorse`),
-  KEY `ID_WP` (`ID_WP`)
+  KEY `ID_WP` (`ID_WP`),
+  CONSTRAINT `FK_produce_risorsa` FOREIGN KEY (`ID_Risorse`) REFERENCES `risorsa` (`ID_Risorsa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_produce_work package` FOREIGN KEY (`ID_WP`) REFERENCES `work package` (`ID_WP`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.produce: ~0 rows (circa)
@@ -117,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `scompone` (
   `ID_WBS` int(11) NOT NULL,
   `ID_WBS(padre)` int(11) NOT NULL,
   KEY `ID_WBS` (`ID_WBS`),
-  KEY `ID_WBS(padre)` (`ID_WBS(padre)`)
+  KEY `ID_WBS(padre)` (`ID_WBS(padre)`),
+  CONSTRAINT `FK_scompone_wbs` FOREIGN KEY (`ID_WBS(padre)`) REFERENCES `wbs` (`ID_WBS`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.scompone: ~0 rows (circa)
@@ -141,7 +150,8 @@ CREATE TABLE IF NOT EXISTS `wbs` (
   `Descrizione` text NOT NULL,
   `ID_Progetto` int(11) NOT NULL,
   PRIMARY KEY (`ID_WBS`),
-  KEY `ID_Progetto` (`ID_Progetto`)
+  KEY `ID_Progetto` (`ID_Progetto`),
+  CONSTRAINT `FK_wbs_progetto` FOREIGN KEY (`ID_Progetto`) REFERENCES `progetto` (`ID_Progetto`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.wbs: ~0 rows (circa)
@@ -155,7 +165,8 @@ CREATE TABLE IF NOT EXISTS `work package` (
   `Note` text NOT NULL,
   `ID_WBS` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ID_WP`),
-  KEY `ID_WBS` (`ID_WBS`)
+  KEY `ID_WBS` (`ID_WBS`),
+  CONSTRAINT `FK_work package_wbs` FOREIGN KEY (`ID_WBS`) REFERENCES `wbs` (`ID_WBS`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dump dei dati della tabella gestione_progetti.work package: ~0 rows (circa)
