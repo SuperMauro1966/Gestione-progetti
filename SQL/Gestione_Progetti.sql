@@ -96,7 +96,7 @@ DROP TABLE IF EXISTS `progetto`;
 CREATE TABLE IF NOT EXISTS `progetto` (
   `ID_Progetto` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(50) NOT NULL DEFAULT '',
-  `Descrizione` varchar(200) NOT NULL DEFAULT '0',
+  `Descrizione` varchar(50) NOT NULL DEFAULT '0',
   `Data_Inizio` date NOT NULL,
   `Data_Fine` date NOT NULL,
   PRIMARY KEY (`ID_Progetto`)
