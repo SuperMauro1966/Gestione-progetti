@@ -20,15 +20,36 @@ DROP DATABASE IF EXISTS `gestione_progetti`;
 CREATE DATABASE IF NOT EXISTS `gestione_progetti` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
 USE `gestione_progetti`;
 
+-- Dump della struttura di tabella gestione_progetti.milestone
+DROP TABLE IF EXISTS `milestone`;
+CREATE TABLE IF NOT EXISTS `milestone` (
+  `ID_Milestone` int(11) NOT NULL,
+  `Nome_Milestone` varchar(50) NOT NULL DEFAULT '',
+  `Data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- L’esportazione dei dati non era selezionata.
+
 -- Dump della struttura di tabella gestione_progetti.progetto
 DROP TABLE IF EXISTS `progetto`;
 CREATE TABLE IF NOT EXISTS `progetto` (
-  `ID_Progetto` int(11) NOT NULL,
+  `ID_Progetto` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(50) NOT NULL DEFAULT '',
   `Descrizione` varchar(200) NOT NULL DEFAULT '0',
   `Data_Inizio` date NOT NULL,
   `Data_Fine` date NOT NULL,
   PRIMARY KEY (`ID_Progetto`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- L’esportazione dei dati non era selezionata.
+
+-- Dump della struttura di tabella gestione_progetti.risorsa
+DROP TABLE IF EXISTS `risorsa`;
+CREATE TABLE IF NOT EXISTS `risorsa` (
+  `ID_Risorsa` int(11) NOT NULL,
+  `Descrizione_Risorsa` text NOT NULL,
+  `Quantita` int(15) NOT NULL DEFAULT 0,
+  `UnitaDiMisura` varchar(50) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- L’esportazione dei dati non era selezionata.
