@@ -42,6 +42,7 @@ DROP TABLE IF EXISTS `deliverables`;
 CREATE TABLE IF NOT EXISTS `deliverables` (
   `ID_Milestone` int(11) NOT NULL,
   `ID_Risorse` int(11) NOT NULL,
+  `quantita` int(4) DEFAULT NULL,
   KEY `ID_Milestone` (`ID_Milestone`),
   KEY `ID_Risorse` (`ID_Risorse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
