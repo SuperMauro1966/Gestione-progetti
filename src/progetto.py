@@ -9,7 +9,7 @@ def menu():
     print("4. visualizza dettagli di un progetto")
     print("5. ritorno al menù principale")
     scelta = input(" scelta --> ")
-    
+
 
 
 def dlg_crea_progetto():
@@ -39,7 +39,7 @@ def crea_progetto(conn, nome, desc, di, df):
     cursor.execute("INSERT INTO progetto(Nome, Descrizione, Data_Inizio, Data_Fine ) VALUES (?,?,?,?)", (nome, desc, di, df))
     
     conn.commit()
-
+    
 def is_progetto_present_by_name(conn, nome):
     cursor = conn.cursor(dictionary=True)
 
@@ -49,6 +49,20 @@ def is_progetto_present_by_name(conn, nome):
     count = result['nr']
 
     return count > 0
+
+def dlg_cancella_progetto():
+    print("inserisci il nome del progetto da cancellare")
+    nome = input(" nome --> ")
+    presente = is_progetto_present_by_name(conn, nome)
+    if presente:
+        cancella_progetto(conn, nome)
+
+
+
+def cancella_progetto(conn, nome):
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("DELETE FROM progetto WHERE Nome = ?", (nome,))
 
 
 
