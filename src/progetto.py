@@ -5,7 +5,11 @@ __all__ = ["crea_progetto"]
 def menu():
     print("1. crea progetto")
     print("2. cancella progetto")
-    print("3. ritorno al menù principale")
+    print("3. visualizza tutti i progetti")
+    print("4. visualizza dettagli di un progetto")
+    print("5. ritorno al menù principale")
+    scelta = input(" scelta --> ")
+    
 
 
 def dlg_crea_progetto():
