@@ -1,37 +1,64 @@
-import mariadb
+from db import conn
 
-conn_params = {
-    "user": "root",
-    "password": "12345678",
-    "host": "localhost",
-    "database": "gestione_progetti"
-}
- 
-connection = mariadb.connect(**conn_params)
+__all__ = ["menu_risorse", "crea_risorsa"]
 
-cursor = connection.cursor(dictionary=True)
+def menu_risorse():
+    while True:
+        print("\n--- Menu Risorse ---")
+        print("1. Aggiungi risorsa")
+        print("2. Visualizza tutte le risorse")
+        print("3. Modifica una risorsa")
+        print("4. Cancella una risorsa")
+        print("5. Ritorna al menù principale")
 
-print("inserire i dati per la creazione della risorsa")
+        scelta = input("Scelta --> ")
+
+        if scelta == "1":
+            crea_risorsa()
+        elif scelta == "2":
+            visualizza_risorse()
+        elif scelta == "3":
+            modifica_risorsa()
+        elif scelta == "4":
+            cancella_risorsa()
+        elif scelta == "5":
+            break
+        else:
+            print("Scelta non valida. Riprova.")
+
+def crea_risorsa():
+    print("\nInserire i dati per la creazione della risorsa")
+
+    Quantita = input("Quantita: --> ")
+    UnitaDiMisura = input("Unita di Misura (es. Kg, Litri, Ore, Pezzi): --> ")
+    Descrizione_Risorsa = input("Descrizione Risorsa: --> ")
+
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute(
+        "INSERT INTO risorsa(Quantita, UnitaDiMisura, Descrizione_Risorsa) VALUES (?, ?, ?)",
+        (quantita, unita, descrizione)
+    )
+    conn.commit()
+
+    print("Risorsa inserita con successo!")
+
+def visualizza_risorse():
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM risorsa")
+    risultati = cursor.fetchall()
+
+    print("\n--- Elenco Risorse ---")
+    for r in risultati:
+        print(f"ID: {r['ID']}, Quantità: {r['Quantita']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
 
 
 
-print("Quantita: ")
-Quantita = input("-->")
+def cancella_risorsa():
+    id_risorsa = input("Inserisci l'ID della risorsa da cancellare: ")
 
-print("Unita di Misura (es. Kg, Litri, Ore, Pezzi): ")
-UnitaDiMisura = input("-->")
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("DELETE FROM risorsa WHERE ID = ?", (id_risorsa,))
+    conn.commit()
+    print("Risorsa cancellata con successo!")
 
-print("Descrizione Risorse: ")
-Descrizione_Risorsa = input("-->")
-
-
-cursor.execute(
-    "INSERT INTO risorsa(Quantita, UnitaDiMisura, Descrizione_Risorsa) VALUES (?, ?, ?)",
-    (Quantita, UnitaDiMisura, Descrizione_Risorsa)
-)
- 
-connection.commit()
-
-connection.close()
-
-print("Risorsa inserita con successo!")
+def modifica_risorsa():
