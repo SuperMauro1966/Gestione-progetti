@@ -64,6 +64,10 @@ def cancella_progetto(conn, nome):
 
     cursor.execute("DELETE FROM progetto WHERE Nome = ?", (nome,))
 
+    conn.commit()
+
+def dlg_visualizza_progetti(conn):
+    raise NotImplementedError
 
 
 
