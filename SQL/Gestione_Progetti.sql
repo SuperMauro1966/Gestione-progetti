@@ -100,8 +100,9 @@ CREATE TABLE IF NOT EXISTS `progetto` (
   `Descrizione` varchar(50) NOT NULL DEFAULT '0',
   `Data_Inizio` date NOT NULL,
   `Data_Fine` date NOT NULL,
-  PRIMARY KEY (`ID_Progetto`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  PRIMARY KEY (`ID_Progetto`),
+  UNIQUE KEY `idx_progetto_nome` (`Nome`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- L’esportazione dei dati non era selezionata.
 
