@@ -60,52 +60,6 @@ def is_progetto_present_by_name(conn, nome):
 
     return count > 0
 
-def dlg_cancella_progetto():
-    print("inserisci il nome del progetto da cancellare")
-    nome = input(" nome --> ")
-    presente = is_progetto_present_by_name(conn, nome)
-    if presente:
-        cancella_progetto(conn, nome)
-
-
-
-def cancella_progetto(conn, nome):
-    cursor = conn.cursor(dictionary=True)
-
-    cursor.execute("DELETE FROM progetto WHERE Nome = ?", (nome,))
-
-    conn.commit()
-
-def dlg_visualizza_progetti(conn):
-    cursor = conn.cursor(dictionary=True)
-    
-    cursor.execute("SELECT Nome FROM progetto")
-    risultati = cursor.fetchall()
-
-    if risultati:
-        print("Elenco dei progetti:")
-        for progetto in risultati:
-            print(f"- {progetto['Nome']}")
-    else:
-        print("Nessun progetto trovato.")
-
-def dlg_visualizza_dettagli_progetto(conn):
-    nome = input("Inserisci il nome del progetto di cui vuoi vedere i dettagli --> ")
-
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM progetto WHERE Nome = ?", (nome,))
-    progetto = cursor.fetchone()
-
-    if progetto:
-        print("\nDettagli del progetto:")
-        print(f"Nome        : {progetto['Nome']}")
-        print(f"Descrizione : {progetto['Descrizione']}")
-        print(f"Data Inizio : {progetto['Data_Inizio']}")
-        print(f"Data Fine   : {progetto['Data_Fine']}")
-    else:
-        print("Progetto non trovato.")
-
-
-    
+def visualizza_progettti(conn,  nome, descrizione, data_inizio, data_fine)
 
 
