@@ -1,4 +1,3 @@
-from core.db import db
 from core.progetto import is_progetto_present_by_name ,\
                         crea_progetto ,\
                         cancella_progetto ,\
@@ -16,7 +15,17 @@ def menu():
     print("4. visualizza dettagli di un progetto")
     print("5. ritorno al menù principale")
     scelta = input(" scelta --> ")
-    
+
+    if scelta == "1":
+        dlg_crea_progetto()
+    elif scelta == "2":
+        dlg_cancella_progetto()
+    elif scelta == "3":
+        dlg_visualizza_progetti()
+    elif scelta == "5":
+        return 
+    else:
+        print("Scelta non valida, riprova.")
 
 def dlg_crea_progetto():
     print("inserire i dati per la creazione del progetto")
@@ -25,7 +34,7 @@ def dlg_crea_progetto():
         print("nome: ")
         nome=input("-->")
 
-        presente = is_progetto_present_by_name(conn, nome)
+        presente = is_progetto_present_by_name(nome)
 
         if presente :
             print("inserisci un nome diverso")
@@ -37,20 +46,20 @@ def dlg_crea_progetto():
     print("data fine: ")
     data_fine=input("-->")
 
-    crea_progetto(conn,  nome, descrizione, data_inizio, data_fine)
+    crea_progetto(nome, descrizione, data_inizio, data_fine)
 
 
 def dlg_cancella_progetto():
     print("inserisci il nome del progetto da cancellare")
     nome = input(" nome --> ")
-    presente = is_progetto_present_by_name(conn, nome)
+    presente = is_progetto_present_by_name(nome)
     if presente:
-        cancella_progetto(conn, nome)
+        cancella_progetto(nome)
 
 
-def dlg_visualizza_progetti(conn):
+def dlg_visualizza_progetti():
     
-    risultati= get_allproject(conn)
+    risultati= get_allproject()
     
     if risultati:
         print("Elenco dei progetti:")
@@ -61,7 +70,7 @@ def dlg_visualizza_progetti(conn):
         print("Nessun progetto trovato.")
 
 
-def dlg_visualizza_dettagli_progetto(conn):
+def dlg_visualizza_dettagli_progetto():
     nome = input("Inserisci il nome del progetto di cui vuoi vedere i dettagli --> ")
 
     cursor = conn.cursor(dictionary=True)
@@ -76,3 +85,4 @@ def dlg_visualizza_dettagli_progetto(conn):
         print(f"Data Fine   : {progetto['Data_Fine']}")
     else:
         print("Progetto non trovato.")
+

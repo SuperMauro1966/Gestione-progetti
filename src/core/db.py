@@ -12,5 +12,5 @@ _conn_params= {
 }
  
 conn= mariadb.connect(**_conn_params)
-register(conn.closes)
+register(conn.close)
 
