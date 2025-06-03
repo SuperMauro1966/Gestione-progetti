@@ -1,6 +1,6 @@
 from core.db import conn
 
-__all__ = ["crea_progetto"]
+__all__ = ["crea_progetto, is_progetto_present_by_name, cancella_progetto, get_allproject, visualizza_dettagli_progetto"]
 
 def crea_progetto(nome, desc, di, df):
     cursor = conn.cursor(dictionary=True)
@@ -28,7 +28,7 @@ def cancella_progetto(nome):
 
 def get_allproject():
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM progetto")
+    cursor.execute("SELECT Nome, Descrizione, Data_Inizio, Data_Fine FROM progetto")
     return cursor.fetchall()
     
 def visualizza_dettagli_progetto(nome):
