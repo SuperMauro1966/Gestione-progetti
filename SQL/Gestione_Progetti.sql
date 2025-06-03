@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `appartiene` (
   KEY `ID_Task` (`ID_Task`),
   KEY `ID_WP` (`ID_WP`),
   CONSTRAINT `FK_appartiene_task` FOREIGN KEY (`ID_Task`) REFERENCES `task` (`ID_Task`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_appartiene_work package` FOREIGN KEY (`ID_WP`) REFERENCES `work package` (`ID_WP`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_appartiene_work package` FOREIGN KEY (`ID_WP`) REFERENCES `work_package` (`ID_WP`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- L’esportazione dei dati non era selezionata.
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `produce` (
   KEY `ID_Risorse` (`ID_Risorse`),
   KEY `ID_WP` (`ID_WP`),
   CONSTRAINT `FK_produce_risorsa` FOREIGN KEY (`ID_Risorse`) REFERENCES `risorsa` (`ID_Risorsa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_produce_work package` FOREIGN KEY (`ID_WP`) REFERENCES `work package` (`ID_WP`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_produce_work package` FOREIGN KEY (`ID_WP`) REFERENCES `work_package` (`ID_WP`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- L’esportazione dei dati non era selezionata.
@@ -155,9 +155,9 @@ CREATE TABLE IF NOT EXISTS `wbs` (
 
 -- L’esportazione dei dati non era selezionata.
 
--- Dump della struttura di tabella gestione_progetti.work package
-DROP TABLE IF EXISTS `work package`;
-CREATE TABLE IF NOT EXISTS `work package` (
+-- Dump della struttura di tabella gestione_progetti.work_package
+DROP TABLE IF EXISTS `work_package`;
+CREATE TABLE IF NOT EXISTS `work_package` (
   `ID_WP` int(11) NOT NULL AUTO_INCREMENT,
   `Nome_WP` varchar(50) NOT NULL DEFAULT '0',
   `Descrizione_WP` varchar(50) NOT NULL DEFAULT '0',
