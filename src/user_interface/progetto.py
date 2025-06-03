@@ -1,7 +1,8 @@
 from core.progetto import is_progetto_present_by_name ,\
                         crea_progetto ,\
                         cancella_progetto ,\
-                        get_allproject
+                        get_allproject,\
+                        visualizza_dettagli_progetto
 
 
 
@@ -72,10 +73,7 @@ def dlg_visualizza_progetti():
 
 def dlg_visualizza_dettagli_progetto():
     nome = input("Inserisci il nome del progetto di cui vuoi vedere i dettagli --> ")
-
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM progetto WHERE Nome = ?", (nome,))
-    progetto = cursor.fetchone()
+    progetto = visualizza_dettagli_progetto(nome)
 
     if progetto:
         print("\nDettagli del progetto:")
