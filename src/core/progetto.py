@@ -26,7 +26,14 @@ def cancella_progetto(nome):
 
     conn.commit()
 
-
+def get_allproject():
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM progetto")
+    return cursor.fetchall()
     
+def visualizza_dettagli_progetto(nome):
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT Nome, Descrizione, Data_Inizio, Data_Fine FROM progetto WHERE Nome = ?", (nome))
+    return cursor.fetchone()
 
 
