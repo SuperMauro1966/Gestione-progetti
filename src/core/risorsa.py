@@ -23,18 +23,18 @@ def get_all_risorse():
 
 def get_risorsa_by_id(risorsa_id):
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM risorsa WHERE ID = ?", (risorsa_id,))
+    cursor.execute("SELECT * FROM risorsa WHERE ID_Risorsa = ?", (risorsa_id,))
     return cursor.fetchone()
 
 def modifica_risorsa(risorsa_id, quantita, unita, descrizione):
     cursor = conn.cursor(dictionary=True)
     cursor.execute(
-        "UPDATE risorsa SET Quantita = ?, UnitaDiMisura = ?, Descrizione_Risorsa = ? WHERE ID = ?",
+        "UPDATE risorsa SET Quantita = ?, UnitaDiMisura = ?, Descrizione_Risorsa = ? WHERE ID_Risorsa= ?",
         (quantita, unita, descrizione, risorsa_id)
     )
     conn.commit()
 
 def cancella_risorsa(risorsa_id):
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("DELETE FROM risorsa WHERE ID = ?", (risorsa_id,))
+    cursor.execute("DELETE FROM risorsa WHERE ID_Risorsa = ?", (risorsa_id,))
     conn.commit()

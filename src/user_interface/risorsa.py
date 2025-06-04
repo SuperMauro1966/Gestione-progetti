@@ -46,8 +46,9 @@ def dlg_visualizza_risorse():
     risorse = get_all_risorse()
     print("\n--- Elenco Risorse ---")
     for r in risorse:
-        print(f"ID: {r['ID']}, Quantità: {r['Quantita']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
+        print(f"ID: {r['ID_Risorsa']}, Quantità: {r['Quantita']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
     input("\nPremi INVIO per continuare...")
+
 
 def dlg_modifica_risorsa():
     risorsa_id = input("Inserisci l'ID della risorsa da modificare: ")
