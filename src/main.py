@@ -1,6 +1,7 @@
 import user_interface.WBS
 import user_interface.progetto
 import user_interface.task
+import user_interface.risorsa
 
 def main():
     while True:
