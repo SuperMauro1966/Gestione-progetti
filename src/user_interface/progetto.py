@@ -79,14 +79,19 @@ def dlg_visualizza_progetti():
 
 def dlg_visualizza_dettagli_progetto():
     nome = input("Inserisci il nome del progetto di cui vuoi vedere i dettagli --> ")
-    progetto = visualizza_dettagli_progetto(nome)
+    tutto = visualizza_dettagli_progetto(nome)
 
-    if progetto:
+    if tutto:
+        progetto = tutto[0]
         print("\nDettagli del progetto:")
-        print(f"Nome        : {progetto['Nome']}")
-        print(f"Descrizione : {progetto['Descrizione']}")
+        print(f"Nome        : {progetto['Nome_P']}")
+        print(f"Descrizione : {progetto['Descrizione_P']}")
         print(f"Data Inizio : {progetto['Data_Inizio']}")
         print(f"Data Fine   : {progetto['Data_Fine']}")
+        print("WBS:")
+        for i, tutto in enumerate(tutto, start=1):
+            print(f"  {i}. {tutto['Nome_WBS']} - {tutto['Descrizione_WBS']}")
+
     else:
         print("Progetto non trovato.")
 
