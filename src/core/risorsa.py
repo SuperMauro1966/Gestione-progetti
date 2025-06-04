@@ -30,4 +30,11 @@ def modifica_risorsa(risorsa_id, quantita, unita, descrizione):
     cursor = conn.cursor(dictionary=True)
     cursor.execute(
         "UPDATE risorsa SET Quantita = ?, UnitaDiMisura = ?, Descrizione_Risorsa = ? WHERE ID = ?",
-        (quantita, unita, descr
+        (quantita, unita, descrizione, risorsa_id)
+    )
+    conn.commit()
+
+def cancella_risorsa(risorsa_id):
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("DELETE FROM risorsa WHERE ID = ?", (risorsa_id,))
+    conn.commit()
