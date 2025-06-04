@@ -1,10 +1,11 @@
-from core.risorsa import (
-    crea_risorsa,
-    get_all_risorse,
-    get_risorsa_by_id,
-    modifica_risorsa,
-    cancella_risorsa
-)
+from core.risorsa import 
+                        crea_risorsa,\
+                        get_all_risorse,\
+                        get_risorsa_by_id,\
+                        modifica_risorsa,\
+                        cancella_risorsa
+
+
 
 __all__ = ["menu_risorse"]
 
