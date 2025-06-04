@@ -33,7 +33,7 @@ def get_allproject():
     
 def visualizza_dettagli_progetto(nome):
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT Nome, Descrizione, Data_Inizio, Data_Fine FROM progetto WHERE Nome = ?", (nome))
+    cursor.execute("SELECT Nome, Descrizione, Data_Inizio, Data_Fine FROM progetto WHERE Nome = ?", (nome,))
     return cursor.fetchone()
 
 
