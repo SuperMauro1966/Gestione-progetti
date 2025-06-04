@@ -10,23 +10,27 @@ __all__ = [""]
 
 
 def menu():
-    print("1. crea progetto")
-    print("2. cancella progetto")
-    print("3. visualizza tutti i progetti")
-    print("4. visualizza dettagli di un progetto")
-    print("5. ritorno al menù principale")
-    scelta = input(" scelta --> ")
+    while True:
+        print("1. crea progetto")
+        print("2. cancella progetto")
+        print("3. visualizza tutti i progetti")
+        print("4. visualizza dettagli di un progetto")
+        print("5. ritorno al menù principale")
+        scelta = input(" scelta --> ")
 
-    if scelta == "1":
-        dlg_crea_progetto()
-    elif scelta == "2":
-        dlg_cancella_progetto()
-    elif scelta == "3":
-        dlg_visualizza_progetti()
-    elif scelta == "5":
-        return 
-    else:
-        print("Scelta non valida, riprova.")
+        if scelta == "1":
+            dlg_crea_progetto()
+        elif scelta == "2":
+            dlg_cancella_progetto()
+        elif scelta == "3":
+            dlg_visualizza_progetti()
+        elif scelta == "4":
+            dlg_visualizza_dettagli_progetto()
+        elif scelta == "5":
+            return 
+        else:
+            print("Scelta non valida, riprova.")
+    
 
 def dlg_crea_progetto():
     print("inserire i dati per la creazione del progetto")
