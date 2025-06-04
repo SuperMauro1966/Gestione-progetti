@@ -38,3 +38,12 @@ def cancella_risorsa(risorsa_id):
     cursor = conn.cursor(dictionary=True)
     cursor.execute("DELETE FROM risorsa WHERE ID_Risorsa = ?", (risorsa_id,))
     conn.commit()
+
+
+def get_associazioni_risorse():
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+            
+    """)
+    return cursor.fetchall()
+

@@ -3,8 +3,11 @@ from core.risorsa import (
     get_all_risorse,
     get_risorsa_by_id,
     modifica_risorsa,
-    cancella_risorsa
+    cancella_risorsa,
+    get_associazioni_risorse 
 )
+
+
 
 __all__ = ["menu_risorse"]
 
@@ -13,9 +16,10 @@ def menu_risorse():
         print("\n--- Menu Risorse ---")
         print("1. Aggiungi risorsa")
         print("2. Visualizza tutte le risorse")
-        print("3. Modifica una risorsa")
-        print("4. Cancella una risorsa")
-        print("5. Ritorna al menù principale")
+        print("3. Visualizza associazioni delle risorse") 
+        print("4. Modifica una risorsa")
+        print("5. Cancella una risorsa")
+        print("6. Ritorna al menù principale")
 
         scelta = input("Scelta --> ")
 
@@ -24,10 +28,12 @@ def menu_risorse():
         elif scelta == "2":
             dlg_visualizza_risorse()
         elif scelta == "3":
-            dlg_modifica_risorsa()
+            dlg_visualizza_associazioni() 
         elif scelta == "4":
-            dlg_cancella_risorsa()
+            dlg_modifica_risorsa()
         elif scelta == "5":
+            dlg_cancella_risorsa()
+        elif scelta == "6":
             break
         else:
             print("Scelta non valida. Riprova.")
@@ -74,3 +80,13 @@ def dlg_cancella_risorsa():
     cancella_risorsa(risorsa_id)
     print("Risorsa cancellata con successo!")
     input("\nPremi INVIO per continuare...")
+
+  
+
+def dlg_visualizza_associazioni():
+    associazioni = get_associazioni_risorse()
+    print("\n--- Associazioni Risorse ---")
+    for a in associazioni:
+        print("")
+    input("\nPremi INVIO per continuare...")
+
