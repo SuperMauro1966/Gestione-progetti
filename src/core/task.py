@@ -5,7 +5,7 @@ __all__=["crea_task, individua_task, cancella_task, get_alltask, get_onetask"]
 def crea_task(nome, descrizione):
     cursor = conn.cursor(dictionary=True)
 
-    cursor.execute("INSERT INTO task (Nome_Task, Descrizione_Task) VALUES(?,?)", (nome, descrizione))
+    cursor.execute("INSERT INTO task (Nome_Task, Descrizione_Task) VALUES(?,?)", (nome, descrizione,))
 
     conn.commit()
 
@@ -13,7 +13,7 @@ def crea_task(nome, descrizione):
 def individua_task(nome):
     cursor = conn.cursor(dictionary=True)
 
-    cursor.execute("SELECT COUNT(*) AS nd FROM task WHERE Nome_Task = ?", (nome))
+    cursor.execute("SELECT COUNT(*) AS nd FROM task WHERE Nome_Task = ?", (nome,))
 
     result = cursor.fetchone()
     count=result['nd']
@@ -34,10 +34,10 @@ def get_alltask():
 
 def get_onetask(nome):
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT Nome_Task, Descrizione_Task FROM task WHERE Nome_Task = ?", (nome))
+    cursor.execute("SELECT Nome_Task, Descrizione_Task FROM task WHERE Nome_Task = ?", (nome,))
     return cursor.fetchone()
 
 def visualizza_task_wp(nome):
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT Nome_Task, Descrizione_Task FROM task, work package, appartiene WHERE ID_Task=ID_Task AND ID_WP=ID_WP AND Nome_WP = ?",(nome))
+    cursor.execute("SELECT Nome_Task, Descrizione_Task FROM task, work package, appartiene WHERE ID_Task=ID_Task AND ID_WP=ID_WP AND Nome_WP = ?",(nome,))
     return cursor.fetchone()

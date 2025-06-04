@@ -64,13 +64,12 @@ def dlg_cancella_progetto():
 
 def dlg_visualizza_progetti():
     
+    risultati= get_allproject()
     
-    risorse = get_all_risorse()
-
-    if risorse:
-        print("Elenco delle risorse:")
-        for r in risorse:
-            print(f"- ID: {r['ID']}, Quantità: {r['Quantita']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
+    if risultati:
+        print("Elenco dei progetti:")
+        for progetto in risultati:
+            print(f"- {progetto['Nome']}")
     else:
         print("Nessuna risorsa trovata.")
     
@@ -80,14 +79,19 @@ def dlg_visualizza_progetti():
 
 def dlg_visualizza_dettagli_progetto():
     nome = input("Inserisci il nome del progetto di cui vuoi vedere i dettagli --> ")
-    progetto = visualizza_dettagli_progetto(nome)
+    tutto = visualizza_dettagli_progetto(nome)
 
-    if progetto:
+    if tutto:
+        progetto = tutto[0]
         print("\nDettagli del progetto:")
-        print(f"Nome        : {progetto['Nome']}")
-        print(f"Descrizione : {progetto['Descrizione']}")
+        print(f"Nome        : {progetto['Nome_P']}")
+        print(f"Descrizione : {progetto['Descrizione_P']}")
         print(f"Data Inizio : {progetto['Data_Inizio']}")
         print(f"Data Fine   : {progetto['Data_Fine']}")
+        print("WBS:")
+        for i, tutto in enumerate(tutto, start=1):
+            print(f"  {i}. {tutto['Nome_WBS']} - {tutto['Descrizione_WBS']}")
+
     else:
         print("Progetto non trovato.")
 

@@ -31,6 +31,6 @@ def get_all_wbs():
 def visualizza_wp(nome):
     cursor = conn.cursor(dictionary=True)
     cursor.execute(
-        "SELECT Nome_WP, Descrizione_WP FROM work_package, WBS WHERE ID_WBS = ID_WBS AND Nome = ?", (nome)
+        "SELECT Nome_WP, Descrizione_WP FROM work_package, WBS WHERE ID_WBS = ID_WBS AND Nome = ?", (nome,)
     )
     return cursor.fetchall()
