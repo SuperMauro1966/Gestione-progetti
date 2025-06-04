@@ -33,7 +33,7 @@ def menu_task():
     else:
         print("scelta non valida")
 
-def dlg_crea_task()
+def dlg_crea_task():
     print("inserisci i dati da inserire")
     print("Nome:")
     nome = input(" --> ")
