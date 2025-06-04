@@ -64,13 +64,12 @@ def dlg_cancella_progetto():
 
 def dlg_visualizza_progetti():
     
+    risultati= get_allproject()
     
-    risorse = get_all_risorse()
-
-    if risorse:
-        print("Elenco delle risorse:")
-        for r in risorse:
-            print(f"- ID: {r['ID']}, Quantità: {r['Quantita']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
+    if risultati:
+        print("Elenco dei progetti:")
+        for progetto in risultati:
+            print(f"- {progetto['Nome']}")
     else:
         print("Nessuna risorsa trovata.")
     
