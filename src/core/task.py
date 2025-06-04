@@ -37,6 +37,7 @@ def get_onetask(nome):
     cursor.execute("SELECT Nome_Task, Descrizione_Task FROM task WHERE Nome_Task = ?", (nome))
     return cursor.fetchone()
 
-def visualizza_task_wp(nome)
+def visualizza_task_wp(nome):
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT Nome_Task, Descrizione_Task FROM task, work package")
+    cursor.execute("SELECT Nome_Task, Descrizione_Task FROM task, work package, appartiene WHERE ID_Task=ID_Task AND ID_WP=ID_WP AND Nome_WP = ?",(nome))
+    return cursor.fetchone()
