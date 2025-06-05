@@ -52,7 +52,7 @@ def dlg_visualizza_risorse():
     risorse = get_all_risorse()
     print("\n--- Elenco Risorse ---")
     for r in risorse:
-        print(f"ID: {r['ID_Risorsa']}, Quantità: {r['Quantita']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
+        print(f"ID: {r['ID_Risorsa']}, Quantità: {r['Quantita_R']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
     input("\nPremi INVIO per continuare...")
 
 
@@ -67,7 +67,7 @@ def dlg_modifica_risorsa():
 
     print("\nLascia vuoto un campo se non vuoi modificarlo.")
 
-    nuova_quantita = input(f"Nuova Quantità (attuale: {risorsa['Quantita']}): ") or risorsa['Quantita']
+    nuova_quantita = input(f"Nuova Quantità (attuale: {risorsa['Quantita_R']}): ") or risorsa['Quantita_R']
     nuova_unita = input(f"Nuova Unità di Misura (attuale: {risorsa['UnitaDiMisura']}): ") or risorsa['UnitaDiMisura']
     nuova_descrizione = input(f"Nuova Descrizione (attuale: {risorsa['Descrizione_Risorsa']}): ") or risorsa['Descrizione_Risorsa']
 

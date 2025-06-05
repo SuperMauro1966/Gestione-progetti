@@ -6,32 +6,33 @@ from core.task import crea_task,\
                        visualizza_task_wp
 
 def menu_task():
-    print("1 creazione task")
-    print("2. cancellazione task finita")
-    print("3. cancellazione task non finita")
-    print("4. visualizza tutte le task")
-    print("5. visualizzare una task specifica")
-    print("6. visualizza task di un work package")
-    print("7. ritorna al menù principale")
+    while True: 
+        print("1 creazione task")
+        print("2. cancellazione task finita")
+        print("3. cancellazione task non finita")
+        print("4. visualizza tutte le task")
+        print("5. visualizzare una task specifica")
+        print("6. visualizza task di un work package")
+        print("7. ritorna al menù principale")
 
-    scelta = input(" scelta --> ")
+        scelta = input(" scelta --> ")
 
-    if scelta == '1':
-        dlg_crea_task()
-    elif scelta == '2':
-        dlg_cancella_task_finita()
-    elif scelta == '3':
-        dlg_cancella_task_non_finita()
-    elif scelta == '4':
-        dlg_visualizza_task()
-    elif scelta == '5':
-        dlg_visualizza_task_specifica()
-    elif scelta == '6':
-        dlg_visualizza_task_wp()
-    elif scelta == '7':
-        return
-    else:
-        print("scelta non valida")
+        if scelta == '1':
+            dlg_crea_task()
+        elif scelta == '2':
+            dlg_cancella_task_finita()
+        elif scelta == '3':
+            dlg_cancella_task_non_finita()
+        elif scelta == '4':
+            dlg_visualizza_task()
+        elif scelta == '5':
+            dlg_visualizza_task_specifica()
+        elif scelta == '6':
+            dlg_visualizza_task_wp()
+        elif scelta == '7':
+            return
+        else:
+            print("scelta non valida")
 
 def dlg_crea_task():
     print("inserisci i dati da inserire")
