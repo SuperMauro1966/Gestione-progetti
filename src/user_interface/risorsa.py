@@ -16,7 +16,7 @@ def menu_risorse():
         print("\n--- Menu Risorse ---")
         print("1. Aggiungi risorsa")
         print("2. Visualizza tutte le risorse")
-        print("3. Visualizza associazioni delle risorse") """"""""""""""""""""""""""""""""""""
+        print("3. Visualizza associazioni delle risorse") 
         print("4. Modifica una risorsa")
         print("5. Cancella una risorsa")
         print("6. Ritorna al menù principale")
@@ -82,7 +82,6 @@ def dlg_cancella_risorsa():
     input("\nPremi INVIO per continuare...")
 
   
-
 def dlg_visualizza_associazioni():
     associazioni = get_associazioni_risorse()
     print("\n--- Risorse Associate ai Task ---")
