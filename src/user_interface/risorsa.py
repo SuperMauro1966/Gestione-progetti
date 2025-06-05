@@ -82,16 +82,15 @@ def dlg_cancella_risorsa():
     input("\nPremi INVIO per continuare...")
 
   
+
 def dlg_visualizza_associazioni():
     associazioni = get_associazioni_risorse()
-    
-    if not associazioni:
-        print("Nessuna associazione trovata.")
-    else:
-        print("\n--- Associazioni Risorse-Task ---")
-        for a in associazioni:
-            print(f"Risorsa ID: {a['ID_Risorse']} - {a['Descrizione_Risorsa']}  Task ID: {a['ID_Task']} - {a['Nome_Task']}")
-    
+    print("\n--- Risorse Associate ai Task ---")
+    for a in associazioni:
+        print(f"Risorsa: {a['ID_Risorsa']} - {a['Descrizione_Risorsa']}  -->  Task: {a['ID_Task']} - {a['Nome_Task']} ({a['Descrizione_Task']})")
     input("\nPremi INVIO per continuare...")
+
+
+
 
 
