@@ -49,7 +49,10 @@ def dlg_visualizza_milestone():
 
 def dlg_modifica_milestone():
     milestone_id = input("Inserisci l'ID della milestone da modificare: ")
-    milestone = get_milestone_by_id(milestone_id) .")
+    milestone = get_milestone_by_id(milestone_id)
+
+    if milestone is None:
+        print("ID non trovato.")
         input("\nPremi INVIO per continuare...")
         return
 

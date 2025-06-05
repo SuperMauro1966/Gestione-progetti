@@ -2,6 +2,7 @@ import user_interface.WBS
 import user_interface.progetto
 import user_interface.task
 import user_interface.risorsa
+import user_interface.milestone
 
 def main():
     while True:
@@ -10,7 +11,8 @@ def main():
         print("2. WBS")
         print("3. Risorse")
         print("4. task")
-        print("5. Esci")
+        print("5. milestone")
+        print("6. Esci")
 
 
         scelta = input("Scelta --> ")
@@ -24,7 +26,9 @@ def main():
             user_interface.risorsa.menu_risorse()
         elif scelta == '4': 
             user_interface.task.menu_task()
-        elif scelta == '5':
+        elif scelta == '5': 
+            user_interface.milestone.menu_milestone()
+        elif scelta == '6':
             print("Uscita dal programma.")
             break
         else:
