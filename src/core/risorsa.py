@@ -45,12 +45,17 @@ def cancella_risorsa(risorsa_id):
 def get_associazioni_risorse():
     cursor = conn.cursor(dictionary=True)
     cursor.execute("""
-        SELECT
-            n.ID_Risorse, r.Descrizione_Risorsa,
-            n.ID_Task, t.Nome_Task, t.Descrizione_Task
-        FROM necessita n
-        JOIN risorsa r ON n.ID_Risorse = r.ID_Risorsa
-        JOIN task t ON n.ID_Task = t.ID_Task
+        SELECT 
+            risorsa.ID_Risorsa, 
+            risorsa.Descrizione_Risorsa, 
+            task.ID_Task, 
+            task.Nome_Task, 
+            task.Descrizione_Task
+        FROM 
+            necessita, risorsa, task 
+        WHERE 
+            necessita.ID_Risorse_N = risorsa.ID_Risorsa AND
+            necessita.ID_Task_N = task.ID_Task
     """)
     return cursor.fetchall()
 
