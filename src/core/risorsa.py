@@ -11,7 +11,7 @@ __all__ = [
 def crea_risorsa(quantita, unita, descrizione):
     cursor = conn.cursor(dictionary=True)
     cursor.execute(
-        "INSERT INTO risorsa (Quantita, UnitaDiMisura, Descrizione_Risorsa) VALUES (?, ?, ?)",
+        "INSERT INTO risorsa (Quantita_R, UnitaDiMisura, Descrizione_Risorsa) VALUES (?, ?, ?)",
         (quantita, unita, descrizione)
     )
     conn.commit()
@@ -29,7 +29,7 @@ def get_risorsa_by_id(risorsa_id):
 def modifica_risorsa(risorsa_id, quantita, unita, descrizione):
     cursor = conn.cursor(dictionary=True)
     cursor.execute(
-        "UPDATE risorsa SET Quantita = ?, UnitaDiMisura = ?, Descrizione_Risorsa = ? WHERE ID_Risorsa= ?",
+        "UPDATE risorsa SET Quantita_R = ?, UnitaDiMisura = ?, Descrizione_Risorsa = ? WHERE ID_Risorsa= ?",
         (quantita, unita, descrizione, risorsa_id)
     )
     conn.commit()
@@ -45,12 +45,17 @@ def cancella_risorsa(risorsa_id):
 def get_associazioni_risorse():
     cursor = conn.cursor(dictionary=True)
     cursor.execute("""
-        SELECT
-            n.ID_Risorse, r.Descrizione_Risorsa,
-            n.ID_Task, t.Nome_Task, t.Descrizione_Task
-        FROM necessita n
-        JOIN risorsa r ON n.ID_Risorse = r.ID_Risorsa
-        JOIN task t ON n.ID_Task = t.ID_Task
+        SELECT 
+            risorsa.ID_Risorsa, 
+            risorsa.Descrizione_Risorsa, 
+            task.ID_Task, 
+            task.Nome_Task, 
+            task.Descrizione_Task
+        FROM 
+            necessita, risorsa, task 
+        WHERE 
+            necessita.ID_Risorse_N = risorsa.ID_Risorsa AND
+            necessita.ID_Task_N = task.ID_Task
     """)
     return cursor.fetchall()
 

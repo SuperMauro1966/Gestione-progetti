@@ -69,7 +69,7 @@ def dlg_visualizza_progetti():
     if risultati:
         print("Elenco dei progetti:")
         for progetto in risultati:
-            print(f"- {progetto['Nome']}")
+            print(f"- {progetto['Nome_P']}")
     else:
         print("Nessuna risorsa trovata.")
     

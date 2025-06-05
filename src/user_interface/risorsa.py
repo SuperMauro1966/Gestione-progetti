@@ -16,7 +16,7 @@ def menu_risorse():
         print("\n--- Menu Risorse ---")
         print("1. Aggiungi risorsa")
         print("2. Visualizza tutte le risorse")
-        print("3. Visualizza associazioni delle risorse") """"""""""""""""""""""""""""""""""""
+        print("3. Visualizza associazioni delle risorse") 
         print("4. Modifica una risorsa")
         print("5. Cancella una risorsa")
         print("6. Ritorna al menù principale")
@@ -52,7 +52,7 @@ def dlg_visualizza_risorse():
     risorse = get_all_risorse()
     print("\n--- Elenco Risorse ---")
     for r in risorse:
-        print(f"ID: {r['ID_Risorsa']}, Quantità: {r['Quantita']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
+        print(f"ID: {r['ID_Risorsa']}, Quantità: {r['Quantita_R']}, Unità: {r['UnitaDiMisura']}, Descrizione: {r['Descrizione_Risorsa']}")
     input("\nPremi INVIO per continuare...")
 
 
@@ -67,7 +67,7 @@ def dlg_modifica_risorsa():
 
     print("\nLascia vuoto un campo se non vuoi modificarlo.")
 
-    nuova_quantita = input(f"Nuova Quantità (attuale: {risorsa['Quantita']}): ") or risorsa['Quantita']
+    nuova_quantita = input(f"Nuova Quantità (attuale: {risorsa['Quantita_R']}): ") or risorsa['Quantita_R']
     nuova_unita = input(f"Nuova Unità di Misura (attuale: {risorsa['UnitaDiMisura']}): ") or risorsa['UnitaDiMisura']
     nuova_descrizione = input(f"Nuova Descrizione (attuale: {risorsa['Descrizione_Risorsa']}): ") or risorsa['Descrizione_Risorsa']
 
@@ -82,7 +82,6 @@ def dlg_cancella_risorsa():
     input("\nPremi INVIO per continuare...")
 
   
-
 def dlg_visualizza_associazioni():
     associazioni = get_associazioni_risorse()
     print("\n--- Risorse Associate ai Task ---")
