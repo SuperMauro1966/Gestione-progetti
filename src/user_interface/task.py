@@ -16,19 +16,19 @@ def menu_task():
 
     scelta = input(" scelta --> ")
 
-    if scelta == 1:
+    if scelta == '1':
         dlg_crea_task()
-    elif scelta == 2:
+    elif scelta == '2':
         dlg_cancella_task_finita()
-    elif scelta == 3:
+    elif scelta == '3':
         dlg_cancella_task_non_finita()
-    elif scelta == 4:
+    elif scelta == '4':
         dlg_visualizza_task()
-    elif scelta == 5:
+    elif scelta == '5':
         dlg_visualizza_task_specifica()
-    elif scelta == 6:
+    elif scelta == '6':
         dlg_visualizza_task_wp()
-    elif scelta == 7:
+    elif scelta == '7':
         return
     else:
         print("scelta non valida")
