@@ -63,7 +63,7 @@ def dlg_visualizza_wbs():
     if risultati:
         print("Elenco delle WBS:")
         for wbs in risultati:
-            print(f"- {wbs['Nome']}")
+            print(f"- {wbs['Nome_WBS']}")
     else:
         print("Nessuna WBS trovata.")
 

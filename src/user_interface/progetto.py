@@ -95,3 +95,5 @@ def dlg_visualizza_dettagli_progetto():
     else:
         print("Progetto non trovato.")
 
+    
+

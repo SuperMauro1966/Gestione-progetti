@@ -3,6 +3,7 @@ import user_interface.progetto
 import user_interface.task
 import user_interface.risorsa
 import user_interface.milestone
+import user_interface.work_package
 
 def main():
     while True:
@@ -12,7 +13,8 @@ def main():
         print("3. Risorse")
         print("4. task")
         print("5. milestone")
-        print("6. Esci")
+        print("6. work package")
+        print("7. Esci")
 
 
         scelta = input("Scelta --> ")
@@ -29,7 +31,8 @@ def main():
         elif scelta == '5': 
             user_interface.milestone.menu_milestone()
         elif scelta == '6':
-            print("Uscita dal programma.")
+            user_interface.work_package.menu_wp()
+        elif scelta == '7':
             break
         else:
             print("Scelta non valida, riprova.")

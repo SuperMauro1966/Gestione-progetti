@@ -2,15 +2,18 @@ from core.db import conn
 
 def crea_wp(nome, descrizione, note, nome_wbs):
     cursor = conn.cursor()
+    cursor.execute("SELECT ID_WBS FROM wbs WHERE Nome_WBS = %s ", (nome_wbs,))
+    ID = cursor.fetchone()
+    ID_WBS = ID[0]
     cursor.execute("""
-        INSERT INTO work_package (Nomw_WP, Descrizione, Note, Nome_WBS)
+        INSERT INTO work_package (Nome_WP, Descrizione_WP, Note, ID_WBS_WP)
         VALUES (%s, %s, %s, %s)
-    """, (nome, descrizione, note, nome_wbs))
+    """, (nome, descrizione, note, ID_WBS))
     conn.commit()
 
 def is_wp_present(nome):
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT COUNT(*) AS nwp FROM work_package WHERE Nomw_WP = %s", (nome,))
+    cursor.execute("SELECT COUNT(*) AS nwp FROM work_package WHERE Nome_WP = %s", (nome,))
     result = cursor.fetchone()
     return result['nwp'] > 0
 

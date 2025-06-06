@@ -36,6 +36,7 @@ def dlg_crea_milestone():
     print("\nInserisci i dati della nuova milestone")
     nome = input("Nome milestone: ")
     data = input("Data (YYYY-MM-DD): ")
+
     crea_milestone(nome, data)
     print("Milestone creata con successo!")
     input("\nPremi INVIO per continuare...")
@@ -44,7 +45,7 @@ def dlg_visualizza_milestone():
     milestone = get_all_milestone()
     print("\n--- Elenco Milestone ---")
     for m in milestone:
-        print(f"ID: {m['ID_Milestone']}, Nome: {m['Nome_Milestone']}, Data: {m['Data']}")
+        print(f"ID: {m['ID_Milestone']}, Nome: {m['Nome_Milestone']}, Data: {m['Data_Milestone']}")
     input("\nPremi INVIO per continuare...")
 
 def dlg_modifica_milestone():
@@ -57,7 +58,7 @@ def dlg_modifica_milestone():
         return
 
     nuovo_nome = input(f"Nuovo nome (attuale: {milestone['Nome_Milestone']}): ") or milestone['Nome_Milestone']
-    nuova_data = input(f"Nuova data (attuale: {milestone['Data']}): ") or milestone['Data']
+    nuova_data = input(f"Nuova data (attuale: {milestone['Data_Milestone']}): ") or milestone['Data_Milestone']
 
     modifica_milestone(milestone_id, nuovo_nome, nuova_data)
     print("Milestone modificata.")

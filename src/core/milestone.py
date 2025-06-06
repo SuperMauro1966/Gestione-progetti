@@ -11,7 +11,7 @@ __all__ = [
 def crea_milestone(nome, data):
     cursor = conn.cursor(dictionary=True)
     cursor.execute(
-        "INSERT INTO milestone (Nome_Milestone, Data) VALUES (?, ?)",
+        "INSERT INTO milestone (Nome_Milestone, Data_Milestone) VALUES (?, ?)",
         (nome, data)
     )
     conn.commit()
@@ -29,7 +29,7 @@ def get_milestone_by_id(milestone_id):
 def modifica_milestone(milestone_id, nuovo_nome, nuova_data):
     cursor = conn.cursor(dictionary=True)
     cursor.execute(
-        "UPDATE milestone SET Nome_Milestone = ?, Data = ? WHERE ID_Milestone = ?",
+        "UPDATE milestone SET Nome_Milestone = ?, Data_Milestone = ? WHERE ID_Milestone = ?",
         (nuovo_nome, nuova_data, milestone_id)
     )
     conn.commit()
